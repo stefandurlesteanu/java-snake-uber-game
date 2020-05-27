@@ -38,6 +38,7 @@ public class Game extends Pane {
     }
 
     public void start() {
+        this.requestFocus();
         setupInputHandling();
         Globals.getInstance().startGame();
     }

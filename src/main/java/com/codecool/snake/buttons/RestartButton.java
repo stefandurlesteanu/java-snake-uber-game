@@ -1,6 +1,10 @@
 package com.codecool.snake.buttons;
 import com.codecool.snake.Globals;
+import javafx.event.Event;
+import javafx.event.EventHandler;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.control.Button;
+
 
 
 public class RestartButton{
@@ -10,6 +14,7 @@ public class RestartButton{
     public RestartButton(){
         restartButton.setOnAction(e -> triggerRestart());
     }
+
 
     private void triggerRestart(){
         cleanWindow();

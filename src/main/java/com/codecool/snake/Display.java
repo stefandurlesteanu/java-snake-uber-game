@@ -1,14 +1,17 @@
 package com.codecool.snake;
 
+import com.codecool.snake.buttons.RestartButton;
 import com.codecool.snake.entities.GameEntity;
 import java.util.List;
 
+import javafx.scene.control.Button;
 import javafx.scene.layout.Pane;
 
 
 public class Display {
-    private Pane displayPane;
+    public Pane displayPane;
     private DelayedModificationList<GameEntity> gameObjects = new DelayedModificationList<>();
+
 
     public Display(Pane pane) {
         displayPane = pane;
@@ -19,6 +22,9 @@ public class Display {
         gameObjects.add(entity);
     }
 
+    public void add(Button button){
+        displayPane.getChildren().add(button);
+    }
     public void remove(GameEntity entity) {
         displayPane.getChildren().remove(entity);
         gameObjects.remove(entity);
@@ -41,4 +47,5 @@ public class Display {
         displayPane.getChildren().clear();
         gameObjects.clear();
     }
+
 }

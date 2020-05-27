@@ -41,7 +41,8 @@ public class Globals {
 
     public void stopGame() {
         gameLoop.stop();
-        GameOver.display("Game Over","GM");
+        String message = "Your Anaconda is " + this.game.getBody() + " meters long!";
+        GameOver.display("Game Over", message);
     }
 
     private Globals() {

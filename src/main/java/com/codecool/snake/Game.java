@@ -4,6 +4,7 @@ import com.codecool.snake.buttons.RestartButton;
 import com.codecool.snake.entities.enemies.Crocodille;
 import com.codecool.snake.entities.enemies.SimpleEnemy;
 import com.codecool.snake.entities.powerups.AddHP;
+import com.codecool.snake.entities.enemies.Bomb;
 import com.codecool.snake.entities.powerups.SimplePowerUp;
 import com.codecool.snake.entities.snakes.Snake;
 import com.codecool.snake.eventhandler.InputHandler;
@@ -55,10 +56,9 @@ public class Game extends Pane {
     }
 
     private void spawnEnemies(int numberOfEnemies) {
-        for(int i = 0; i < numberOfEnemies; ++i){
-            new SimpleEnemy();
-            new Crocodille();
-        }
+        for(int i = 0; i < numberOfEnemies; ++i) new SimpleEnemy();
+        for(int i = 0; i < numberOfEnemies-2; ++i) new Bomb();
+        for(int i = 0; i < numberOfEnemies-3; ++i) new Crocodille();
     }
 
     private void spawnPowerUps(int numberOfPowerUps) {

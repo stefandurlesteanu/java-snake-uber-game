@@ -40,8 +40,6 @@ public class Globals {
 
     public void stopGame() {
         gameLoop.stop();
-        String message = "Your Python is " + this.game.getBody() + " meters long!";
-        GameOver.display("Game Over", message);
     }
 
     private Globals() {

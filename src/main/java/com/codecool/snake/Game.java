@@ -72,5 +72,4 @@ public class Game extends Pane {
         return snake.getBody();
     }
     int getHealth() {return snake.getHealth();}
-    public void addLife(int life){  snake.changeHealth(life);}
 }

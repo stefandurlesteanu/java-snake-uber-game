@@ -1,6 +1,7 @@
 package com.codecool.snake.entities.snakes;
 
 import com.codecool.snake.DelayedModificationList;
+import com.codecool.snake.GameOver;
 import com.codecool.snake.Globals;
 import com.codecool.snake.entities.Animatable;
 import com.codecool.snake.entities.GameEntity;
@@ -22,7 +23,7 @@ public class Snake implements Animatable {
         head = new SnakeHead(this, position);
         body = new DelayedModificationList<>();
 
-        addPart(4);
+        addPart(3);
     }
 
     public void step() {
@@ -61,6 +62,8 @@ public class Snake implements Animatable {
         if (head.isOutOfBounds() || health <= 0) {
             System.out.println("Game Over");
             Globals.getInstance().stopGame();
+            String message = "Your Python is " + getBody() + " meters long!   " + getHealth();
+            GameOver.display("Game Over", message);
         }
     }
 

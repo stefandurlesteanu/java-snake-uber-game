@@ -78,4 +78,13 @@ public class Snake implements Animatable {
         if(result != null) return result;
         return head;
     }
+
+    public int getBody(){
+       return body.getList().size();
+    }
+
+    public int getHealth(){
+        return this.health;
+    }
+
 }

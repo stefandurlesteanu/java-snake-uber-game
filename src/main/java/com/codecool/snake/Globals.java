@@ -2,14 +2,13 @@ package com.codecool.snake;
 
 import com.codecool.snake.resources.Resources;
 import javafx.scene.image.Image;
-import javafx.scene.layout.Pane;
 
 // class for holding all static stuff
 public class Globals {
     private static Globals instance = null;
 
-    public static final double WINDOW_WIDTH = 1000;
-    public static final double WINDOW_HEIGHT = 700;
+    public static final double WINDOW_WIDTH = 1280;
+    public static final double WINDOW_HEIGHT = 720;
 
     public Display display;
     public Game game;
@@ -32,7 +31,8 @@ public class Globals {
         resources.addImage("SnakeHead", new Image("snake_head.png"));
         resources.addImage("SnakeBody", new Image("snake_body.png"));
         resources.addImage("SimpleEnemy", new Image("simple_enemy.png"));
-        resources.addImage("PowerUpBerry", new Image("powerup_berry.png"));
+        resources.addImage("PowerUpBerry", new Image("power_up_berry.png"));
+        resources.addImage("AddHP", new Image("add_hp.png"));
     }
 
     public Image getImage(String name) { return resources.getImage(name); }
@@ -41,7 +41,7 @@ public class Globals {
 
     public void stopGame() {
         gameLoop.stop();
-        String message = "Your Anaconda is " + this.game.getBody() + " meters long!";
+        String message = "Your Python is " + this.game.getBody() + " meters long!";
         GameOver.display("Game Over", message);
     }
 

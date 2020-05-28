@@ -11,8 +11,6 @@ import javafx.stage.Stage;
 
 public class GameOver {
 
-    public static String score;
-
     public static void display(String title, String message){
         Stage window = new Stage();
 

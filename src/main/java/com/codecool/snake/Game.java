@@ -31,6 +31,7 @@ public class Game extends Pane {
         spawnSnake();
         spawnEnemies(4);
         spawnPowerUps(4);
+        spawnCoffee(2);
         addRestartButton();
 
         GameLoop gameLoop = new GameLoop(snake);
@@ -61,7 +62,10 @@ public class Game extends Pane {
     private void spawnPowerUps(int numberOfPowerUps) {
         for(int i = 0; i < numberOfPowerUps; ++i) new SimplePowerUp();
         for(int i = 0; i < numberOfPowerUps; ++i) new AddHP();
+    }
 
+    private void spawnCoffee(int numberOfCoffee){
+        for(int i = 0; i < numberOfCoffee; ++i) new Coffee();
     }
 
     private void setupInputHandling() {

@@ -11,9 +11,19 @@ import java.util.Queue;
 
 public class SnakeBody extends GameEntity {
     private Queue<Point2D> history = new LinkedList<>();
-    private static final int historySize = 10;
+    private int historySize = 10;
 
     public SnakeBody(Point2D coord) {
+        setImage(Globals.getInstance().getImage("SnakeBody"));
+        setX(coord.getX());
+        setY(coord.getY());
+
+        for (int i = 0; i < historySize; i++) {
+            history.add(coord);
+        }
+    }
+
+    public SnakeBody(Point2D coord, int historySize) {
         setImage(Globals.getInstance().getImage("SnakeBody"));
         setX(coord.getX());
         setY(coord.getY());
@@ -30,4 +40,5 @@ public class SnakeBody extends GameEntity {
         setY(currentPos.getY());
         history.add(pos); // add the parent's current position to the beginning of the history
     }
+
 }

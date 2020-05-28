@@ -56,6 +56,7 @@ public class SnakeHead extends GameEntity implements Interactable {
         }
 
         if(entity instanceof Coffee){
+            snake.addPart(1,5);
             System.out.println(getMessage());
             snake.changeSpeed(1);
         }

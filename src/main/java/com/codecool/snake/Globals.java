@@ -16,7 +16,6 @@ public class Globals {
     private GameLoop gameLoop;
     private Resources resources;
 
-
     public static Globals getInstance() {
         if(instance == null) instance = new Globals();
         return instance;

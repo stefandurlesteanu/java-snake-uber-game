@@ -1,5 +1,6 @@
 package com.codecool.snake;
 
+import com.codecool.snake.buttons.RestartButton;
 import com.codecool.snake.entities.enemies.SimpleEnemy;
 import com.codecool.snake.entities.powerups.AddHP;
 import com.codecool.snake.entities.powerups.SimplePowerUp;
@@ -11,16 +12,17 @@ import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 
 
+
 public class Game extends Pane {
     private Snake snake = null;
     private GameTimer gameTimer = new GameTimer();
+
 
 
     public Game() {
         Globals.getInstance().game = this;
         Globals.getInstance().display = new Display(this);
         Globals.getInstance().setupResources();
-
         init();
     }
 
@@ -28,6 +30,7 @@ public class Game extends Pane {
         spawnSnake();
         spawnEnemies(4);
         spawnPowerUps(4);
+        addRestartButton();
 
         GameLoop gameLoop = new GameLoop(snake);
         Globals.getInstance().setGameLoop(gameLoop);
@@ -36,8 +39,14 @@ public class Game extends Pane {
     }
 
     public void start() {
+        this.requestFocus();
         setupInputHandling();
         Globals.getInstance().startGame();
+    }
+
+    private void addRestartButton(){
+        RestartButton restartButton = new RestartButton();
+        Globals.getInstance().display.add(restartButton.getRestartButton());
     }
 
     private void spawnSnake() {

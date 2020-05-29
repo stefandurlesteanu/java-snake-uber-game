@@ -1,6 +1,7 @@
 package com.codecool.snake.entities.snakes;
 
 import com.codecool.snake.DelayedModificationList;
+import com.codecool.snake.GameOver;
 import com.codecool.snake.Globals;
 import com.codecool.snake.entities.Animatable;
 import com.codecool.snake.entities.GameEntity;
@@ -11,8 +12,9 @@ import javafx.scene.input.KeyCode;
 
 
 public class Snake implements Animatable {
-    private static final float speed = 2;
+    private float speed = 2;
     private int health = 100;
+    private float historySize;
 
     private SnakeHead head;
     private DelayedModificationList<GameEntity> body;
@@ -22,7 +24,7 @@ public class Snake implements Animatable {
         head = new SnakeHead(this, position);
         body = new DelayedModificationList<>();
 
-        addPart(4);
+        addPart(3);
     }
 
     public void step() {
@@ -43,24 +45,37 @@ public class Snake implements Animatable {
     }
 
     public void addPart(int numParts) {
+        if (historySize == 0) historySize =  (10 / speed * 2);
         GameEntity parent = getLastPart();
         Point2D position = parent.getPosition();
 
         for (int i = 0; i < numParts; i++) {
-            SnakeBody newBodyPart = new SnakeBody(position);
+            System.out.println("Speed2 is " + speed);
+            System.out.println("History2 is " + historySize);
+            SnakeBody newBodyPart = new SnakeBody(position, historySize);
             body.add(newBodyPart);
         }
         Globals.getInstance().display.updateSnakeHeadDrawPosition(head);
     }
 
+
+
     public void changeHealth(int diff) {
         health += diff;
     }
+
+    public void changeSpeed(int diff) {
+        speed += diff;
+    }
+
+    public void changeHistorySize(int hs) {historySize = hs;}
 
     private void checkForGameOverConditions() {
         if (head.isOutOfBounds() || health <= 0) {
             System.out.println("Game Over");
             Globals.getInstance().stopGame();
+            String message = "Your Python is " + getBody() + " meters long!   " + getHealth();
+            GameOver.display("Game Over", message);
         }
     }
 
@@ -78,4 +93,13 @@ public class Snake implements Animatable {
         if(result != null) return result;
         return head;
     }
+
+    public int getBody(){
+       return body.getList().size();
+    }
+
+    public int getHealth(){
+        return this.health;
+    }
+
 }

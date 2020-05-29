@@ -23,6 +23,7 @@ public class GameLoop {
 
     public void step() {
         if(running) {
+            System.out.println("Check");
             snake.step();
             for (GameEntity gameObject : Globals.getInstance().display.getObjectList()) {
                 if (gameObject instanceof Animatable) {

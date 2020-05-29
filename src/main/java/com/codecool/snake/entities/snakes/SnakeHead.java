@@ -59,7 +59,7 @@ public class SnakeHead extends GameEntity implements Interactable {
             snake.changeHistorySize(5);
             snake.addPart(1);
             System.out.println(getMessage());
-            snake.changeSpeed(2);
+            snake.changeSpeed(1);
         }
     }
 

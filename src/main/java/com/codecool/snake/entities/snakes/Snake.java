@@ -14,6 +14,7 @@ import javafx.scene.input.KeyCode;
 public class Snake implements Animatable {
     private float speed = 2;
     private int health = 100;
+    private float historySize;
 
     private SnakeHead head;
     private DelayedModificationList<GameEntity> body;
@@ -44,22 +45,14 @@ public class Snake implements Animatable {
     }
 
     public void addPart(int numParts) {
+        if (historySize == 0) historySize =  (10 / speed * 2);
         GameEntity parent = getLastPart();
         Point2D position = parent.getPosition();
 
         for (int i = 0; i < numParts; i++) {
-            SnakeBody newBodyPart = new SnakeBody(position);
-            body.add(newBodyPart);
-        }
-        Globals.getInstance().display.updateSnakeHeadDrawPosition(head);
-    }
-
-    public void addPart(int numParts, int hs) {
-        GameEntity parent = getLastPart();
-        Point2D position = parent.getPosition();
-
-        for (int i = 0; i < numParts; i++) {
-            SnakeBody newBodyPart = new SnakeBody(position, hs);
+            System.out.println("Speed2 is " + speed);
+            System.out.println("History2 is " + historySize);
+            SnakeBody newBodyPart = new SnakeBody(position, historySize);
             body.add(newBodyPart);
         }
         Globals.getInstance().display.updateSnakeHeadDrawPosition(head);
@@ -75,6 +68,7 @@ public class Snake implements Animatable {
         speed += diff;
     }
 
+    public void changeHistorySize(int hs) {historySize = hs;}
 
     private void checkForGameOverConditions() {
         if (head.isOutOfBounds() || health <= 0) {
